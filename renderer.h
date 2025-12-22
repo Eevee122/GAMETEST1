@@ -6,6 +6,10 @@
 #include "player.h"
 #include "types.h"
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 const float fov = 60 * M_PI / 180.0;
 
 const SDL_Color ttf_color_white = {255, 255, 255, 255};
