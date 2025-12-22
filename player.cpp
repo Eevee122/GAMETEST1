@@ -165,7 +165,7 @@ void Player::Fire()
         }
         else
         {
-            for(int i = 0; i < sprites.size(); i++)
+            for(unsigned int i = 0; i < sprites.size(); i++)
             {
                 if(sprites.at(i).type == Enemy)
                 {
