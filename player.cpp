@@ -6,7 +6,7 @@
 #define M_PI 3.14159265358979323846
 #endif
  
-Player::Player(Map* ma, Menu* me) : display_flash(false), health(100), key_count(0), turkey_destruct(false), wall_destruct(false),
+Player::Player(Map* ma, Menu* me) : display_flash(false), health(125), key_count(0), turkey_destruct(false), wall_destruct(false),
     hurt_sound(false), key_sound(false), x(3), y(3), angle(0), turn(0), walk_x(0), walk_y(0), pressed_keys(NULL), map(ma), menu(me)
 {
     pressed_keys = new bool[7];
