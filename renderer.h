@@ -12,59 +12,58 @@
 
 const float fov = 60 * M_PI / 180.0;
 
-const SDL_Color ttf_color_white = {255, 255, 255, 255};
-const SDL_Color ttf_color_banana = {209, 182, 6, 255};
-const SDL_Color ttf_color_red = {255, 0, 0, 255};
+const SDL_Color ttf_color_white = { 255, 255, 255, 255 };
+const SDL_Color ttf_color_banana = { 209, 182, 6, 255 };
+const SDL_Color ttf_color_red = { 255, 0, 0, 255 };
 
 class Renderer
 {
-    public:
-        Renderer(Player* p, Map* ma, Menu* me);
-        bool init_sdl(const char* title, unsigned short width, unsigned short height); //initializes SDL and necessary data for rendering
-        void draw(unsigned int fps); //renders the game and UI and displays it
-        ~Renderer();
+public:
+    Renderer(Player* p, Map* ma, Menu* me);
+    bool init_sdl(const char* title, ushort width, ushort height); //initializes SDL and necessary data for rendering
+    void draw(uint fps); //renders the game and UI and displays it
+    ~Renderer();
 
-        //forbids copy constructor to avoid warning in c++11
-        Renderer(const Renderer& r) = delete;
-        Renderer& operator=(const Renderer& r) = delete;
-        
-    private:
-        void set_pixel(unsigned short x, unsigned short y, unsigned int32 pixel); //sets a pixel on the screen
-        unsigned int32 get_pixel_tex(unsigned short itex, unsigned short x, unsigned short y, bool sprite = false); //gets a pixel from the texture file
+    //forbids copy constructor to avoid warning in c++11
+    Renderer(const Renderer& r) = delete;
+    Renderer& operator=(const Renderer& r) = delete;
 
-        unsigned int32 rgb_to_int(unsigned char r, unsigned char g, unsigned char b); //convert an RGB value to a unsigned int32 used by SDL
-        unsigned int32 apply_light(unsigned int32 color, float factor); //darkens a color using a factor, 1 = no change, 0 = black
+private:
+    void set_pixel(ushort x, ushort y, Uint32 pixel); //sets a pixel on the screen
+    Uint32 get_pixel_tex(ushort itex, ushort x, ushort y, bool sprite = false); //gets a pixel from the texture file
 
-        void draw_sprite(Sprite s); //draws a sprite in the world
-        void draw_2d_sprite(unsigned short itex, unsigned short x, unsigned short y, float size); //draws a sprite as a flat texture on the screen 
-        void draw_text(unsigned short x, unsigned short y, std::string text, bool big_text, SDL_Color ttf_color); //draws text using sdl_ttf
+    Uint32 rgb_to_int(unsigned char r, unsigned char g, unsigned char b); //convert an RGB value to a Uint32 used by SDL
+    Uint32 apply_light(Uint32 color, float factor); //darkens a color using a factor, 1 = no change, 0 = black
 
-        //UI display
-        void display_normal(int fps);
-        void display_menu();
-        void display_pause_menu();
-        void display_game_over();
-        void display_win();
-        void display_help();
+    void draw_sprite(Sprite s); //draws a sprite in the world
+    void draw_2d_sprite(ushort itex, ushort x, ushort y, float size); //draws a sprite as a flat texture on the screen 
+    void draw_text(ushort x, ushort y, std::string text, bool big_text, SDL_Color ttf_color); //draws text using sdl_ttf
 
-        SDL_Window* window;
-        SDL_Renderer* sdl_renderer;
-        SDL_Texture* render_texture;
+    //UI display
+    void display_normal(int fps);
+    void display_menu();
+    void display_pause_menu();
+    void display_game_over();
+    void display_win();
+    void display_help();
 
-        unsigned int32* pixels; //all the pixels rendered on screen
-        unsigned short screen_w; //screen width
-        unsigned short screen_h; //screen height
+    SDL_Window* window;
+    SDL_Renderer* sdl_renderer;
+    SDL_Texture* render_texture;
 
-        SDL_Surface* wall_textures;
-        SDL_Surface* sprites_textures;
-        TTF_Font *font_big; //font with a size of 100
-        TTF_Font *font_medium; //font with a size of 60
-        float* zbuffer; //array containing all distances
+    Uint32* pixels; //all the pixels rendered on screen
+    ushort screen_w; //screen width
+    ushort screen_h; //screen height
 
-        Player* player;
-        Map* map;
-        Menu* menu;
+    SDL_Surface* wall_textures;
+    SDL_Surface* sprites_textures;
+    TTF_Font* font_big; //font with a size of 100
+    TTF_Font* font_medium; //font with a size of 60
+    float* zbuffer; //array containing all distances
+
+    Player* player;
+    Map* map;
+    Menu* menu;
 };
 
 #endif
-
