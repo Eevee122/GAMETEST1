@@ -8,7 +8,7 @@
 #include "types.h"
 
 const float speed = 50;
-const float  turn_accel = 0.08;
+const float turn_accel = 0.08;
 const float turn_max = 0.08;
 
 class Player
