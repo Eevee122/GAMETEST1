@@ -3,7 +3,7 @@
 #include "menu.h"
  
 Menu::Menu() : wants_to_quit(false), current(Main), mouse_down(false), difficulty(Normal), sound(LowSound), timer(), leaderboard(),
-    buttons({
+    buttons{
         Button(550, 350, 140, 55), //play
         Button(380, 420, 600, 55), //difficulty
         Button(550, 620, 140, 55), //menu quit
@@ -13,7 +13,7 @@ Menu::Menu() : wants_to_quit(false), current(Main), mouse_down(false), difficult
         Button(550, 600, 140, 55), //help back
         Button(550, 600, 140, 55), //win quit
         Button(460, 490, 300, 55) //sound
-    })
+    }
 {
 
 }
