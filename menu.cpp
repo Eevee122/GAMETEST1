@@ -22,7 +22,7 @@ bool Menu::check_hover(unsigned short button_id)
 {
     int x, y;
     SDL_GetMouseState(&x, &y);
-    bool hover = buttons[button_id].is_mouse_over(unsigned short(x), unsigned short(y));
+    bool hover = buttons[button_id].is_mouse_over(short(x), short(y));
     if(hover && mouse_down)
         handle_click(button_id);
     return hover;
