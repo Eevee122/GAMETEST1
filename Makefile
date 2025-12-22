@@ -1,3 +1,4 @@
+#define SDL_MAIN_HANDLED
 SYSCONF_LINK = g++
 CPPFLAGS     = -Wall -Wextra -Weffc++ -pedantic -std=c++11 -O3
 LDFLAGS      = 
