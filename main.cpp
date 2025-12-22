@@ -65,7 +65,7 @@ int main()
         {
             map.damage = menu.difficulty == 0 ? 1 : (menu.difficulty == 1 ? 2 : 3);
             map.speed = menu.difficulty == 0 ? 0.8 : (menu.difficulty == 1 ? 1.2 : 2.0);
-            sound.set_volume(menu.sound == 0 ? 0 : (menu.sound == 1 ? 20 : 100));
+            sound.set_volume(menu.sound == 0 ? 0 : (menu.sound == 1 ? 15 : 100));
         }
 
         player.handle_events(dt);
