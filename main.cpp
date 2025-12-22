@@ -1,3 +1,4 @@
+#define SDL_MAIN_HANDLED
 #include <ctime>
 #include <iostream>
 #include "renderer.h"
