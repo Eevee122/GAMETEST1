@@ -9,21 +9,20 @@ const std::string scores_file("scores.txt");
 class Leaderboard 
 {
 	public:
-		Leaderboard(); //create a leadeboard by reading the file
-		~Leaderboard(); //free memory and save scores to disk
+		Leaderboard(); //Читает файл и создает таблицу лидеров
+		~Leaderboard(); //Освобождает место и сохраняет результаты на диск в виде файлика
 
-		//forbids copy constructor to avoid warning in c++11
-		Leaderboard(const Leaderboard& l) = delete;
+		Leaderboard(const Leaderboard& l) = delete; //Запрещает использование копирования для избежания ошибок
         Leaderboard& operator=(const Leaderboard& l) = delete;
 
-		void add_score(int score); //adds a score to the array and saves to disk
+		void add_score(int score); //Добавляет оценку в массив и сохраняет на диск
 
 		int* scores;
 
 	private:
-		void read_file(); //loads scores from file
-		void write_file(); //saves score to disk
-		void sort_scores(); //sorts the score array
+		void read_file(); //Загружает очки из файла
+		void write_file(); //Сохраняет очки в файл
+		void sort_scores(); //Сортирует весь массив очков
 
 };
 
