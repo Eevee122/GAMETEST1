@@ -31,7 +31,7 @@ void Leaderboard::read_file()
             }
             scores[i++] = value;
             std::cout<<scores[i-1]<<std::endl;
-        }
+        } 
         read_flow.close();
         sort_scores(); //avoids cheating
     }
