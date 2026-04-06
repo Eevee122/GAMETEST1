@@ -6,7 +6,7 @@
 
 const std::string scores_file("scores.txt");
 
-class Leaderboard
+class Leaderboard 
 {
 	public:
 		Leaderboard(); //create a leadeboard by reading the file
