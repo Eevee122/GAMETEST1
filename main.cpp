@@ -5,7 +5,7 @@
 #include "player.h"
 #include "sound.h"
 
-int main() 
+int main()
 {
     int lastTime = 0;
     int lastFPSDisplay = 0;
