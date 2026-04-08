@@ -17,11 +17,11 @@ class Menu
 {
 	public:
         Menu();
-        bool check_hover(unsigned short button_id); //returns true if the mouse is over a button and calls handme_click if a mouse button is pressed
-        void handle_click(unsigned short button_id); //handle the buttons logic
-        bool wants_to_quit = false; //true if the player want close the game
-        CurrentMenu current = Main; //currently displayed menu
-        bool mouse_down = false; //true if a mouse button down during this frame, this is handled by the class Player
+        bool check_hover(unsigned short button_id); //Возвращает true, если курсор мыши находится над кнопкой, и вызывает функцию handme_click, если нажата кнопка мыши
+        void handle_click(unsigned short button_id); //Обрабатывает логику кнопок
+        bool wants_to_quit = false; //Возвращает true, если игрок хочет закрыть игру
+        CurrentMenu current = Main; //Правильно показывает меню
+        bool mouse_down = false; //Если в течение этого кадра нажата кнопка мыши, это обрабатывается классом Player
         Difficulty difficulty = Normal;
         SoundVolume sound = LowSound;
         Timer timer;
