@@ -22,14 +22,14 @@ void Player::handle_events(float dt)
     if(health < 1)
         menu->current = GameOver;
 
-    menu->mouse_down = false; //the menu should see the mouse button clicked for one frame only
+    menu->mouse_down = false; //В меню должна отображаться кнопка мыши, нажатая только для одного кадра
     display_flash = false;
     turkey_destruct = false;
     wall_destruct = false;
 
     while(SDL_PollEvent(&event))
     {
-        //mouse button is clicked so we update the menu
+        //Нажата кнопка мыши, и мы обновляем меню
         if(event.type == SDL_MOUSEBUTTONDOWN)
             menu->mouse_down = true;
         //a key is pressed
@@ -44,12 +44,12 @@ void Player::handle_events(float dt)
                     Fire();
             }
         }
-        //a key is released
+        //Нажата клавиша
         else if(event.type == SDL_KEYUP)
         {
             update_key(event.key.keysym.sym, false);
 
-            //pauses the game if the player presses Escape
+            //Пауза игры, если игрок нажал Escape
             if(event.key.keysym.sym == SDLK_ESCAPE)
             {
                 if(menu->current == None)
@@ -58,14 +58,14 @@ void Player::handle_events(float dt)
                     menu->current = None;
             }
 
-            //quits the game if the player is dead and presses Space or Escape
+            //Выходит из игры, если игрок мертв, а также нажимает Пробел или Escape
             if(menu->current == GameOver)
             {
                 if(event.key.keysym.sym == SDLK_SPACE || event.key.keysym.sym == SDLK_ESCAPE)
                     menu->wants_to_quit = true;
             }
         }
-        //close the game if the user presses the close window button
+        //Закрывает игру, если пользователь нажмет кнопку Закрыть окно
         else if(!menu->wants_to_quit)
             menu->wants_to_quit = event.type == SDL_QUIT;
     }
@@ -76,7 +76,7 @@ void Player::handle_events(float dt)
         return;
     }
 
-    //Forward - backward movement
+    //Движение вперед-назад
     if(pressed_keys[0])
         walk_y = speed * dt * 1;
     else if(pressed_keys[2])
@@ -84,7 +84,7 @@ void Player::handle_events(float dt)
     else
         walk_y = 0;
 
-    //Left - right movement
+    //Движение влево-вправо
     if(pressed_keys[3])
         walk_x = speed * dt * 1;
     else if(pressed_keys[1])
@@ -92,7 +92,7 @@ void Player::handle_events(float dt)
     else
         walk_x = 0;
 
-    //rotation
+    //Поворот персонажа
     if(fabs(turn) < turn_max)
     {
         if(pressed_keys[5])
@@ -139,7 +139,7 @@ void Player::Fire()
     float dist = 0;
     bool hit_wall = false;
 
-    //we don't need to calculate sin and cos for each step
+    //Нам не нужно вычислять sin и cos для каждого шага
     float x_offset = cos(angle);
     float y_offset = sin(angle);
 
@@ -147,7 +147,7 @@ void Player::Fire()
     {
         dist += 0.1;
 
-        //pos of the tip of the ray for this iteration
+        //Позиция кончика луча для этой итерации
         float ray_x = x + x_offset * dist;
         float ray_y = y + y_offset * dist;
 
