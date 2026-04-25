@@ -27,7 +27,7 @@ class Player
 
         ~Player();
 
-        //forbids copy constructor to avoid warning in c++11
+        //Запрещает копировать конструктор, чтобы избежать предупреждения в c++11
         Player(const Player& p) = delete;
         Player& operator=(const Player& p) = delete;
 
