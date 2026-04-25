@@ -13,13 +13,13 @@ struct Sprite
 	unsigned short size = 600;
 	unsigned short itex = 0;
 	SpriteType type = Decoration;
-	//squared distance from the player, it's used to sort sprites so no need to calculate the square root
+	//Квадрат расстояния от игрока используется для сортировки спрайтов, поэтому нет необходимости извлекать квадратный корень.
 	float sqr_dist = 0;
 	Uint32 start_time = 0;
 
 	bool operator < (const Sprite& s) const
 	{
-		//sprites further away are sorted before near sprites
+		//Спрайты, расположенные дальше, сортируются перед ближайшими спрайтами
 		return sqr_dist > s.sqr_dist;
 	}
 
@@ -41,21 +41,21 @@ class Map
         unsigned short w = 0;
 		unsigned short h = 0;
 
-		float speed = 0.03; //enemy's speed, changes based on difficulty
-		int damage = 0; //damage inflicted by each enemy, changes based on difficulty
+		float speed = 0.03; //Скорость противника меняется в зависимости от сложности
+		int damage = 0; //Урон, наносимый каждым врагом, меняется в зависимости от сложности
 		int enemy_count = 0;
 		
 		char get_tile(unsigned short x, unsigned short y);
 		void set_tile(unsigned short x, unsigned short y, char tile);
-		void sort_sprites(float player_x, float player_y); //sorts sprites in the vector based on the distance from the player
+		void sort_sprites(float player_x, float player_y); //Сортирует спрайты в векторе в зависимости от расстояния до игрока
 		std::vector<Sprite> const& get_sprites();
-		void delete_sprite(unsigned short id); //deletes sprite at specified index in the vector
-		void update_sprites(float player_x, float player_y, float dt); //moves enemies so they follow the player and changes the size of temp sprites
-		Door get_door(unsigned short x, unsigned short y); //tries to retrive a door at specified coordinates, return 0 if not found
-		bool update_doors(float player_x, float player_y, float dt); //updates the animation state if the player is close enough
-		void animate_sprites(); //swaps sprites for turkeys animation
-		int damage_player(); //returns the amount of damage the player should receive based on difficulty and nearby turkeys
-		bool pickup_keys(); //returns true and remove the key from the map if the player is close enough, returns false if no key is picked up
+		void delete_sprite(unsigned short id); //Удаляет спрайт с указанным индексом в векторе
+		void update_sprites(float player_x, float player_y, float dt); //Перемещает врагов так, чтобы они следовали за игроком, и изменяет размер временных спрайтов
+		Door get_door(unsigned short x, unsigned short y); //Пытается найти дверь по указанным координатам, возвращает 0, если не найдена
+		bool update_doors(float player_x, float player_y, float dt); //Обновляет состояние анимации, если игрок находится достаточно близко
+		void animate_sprites(); //Меняет спрайты для анимации индеек
+		int damage_player(); //Возвращает количество урона, которое игрок должен получить в зависимости от сложности и количества находящихся поблизости индеек
+		bool pickup_keys(); //Возвращает значение true и удаляет ключ с карты, если игрок находится достаточно близко, возвращает значение false, если ключ не найден.
 		void add_temp_sprite(unsigned short itex, float x, float y, unsigned short size); //adds a sprite to the map that is delete 500ms later (for explosions)
 		void update_dist_map(unsigned short px, unsigned short py);
 		~Map();
