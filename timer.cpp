@@ -19,7 +19,7 @@ void Timer::stop()
 unsigned int Timer::get_time()
 {
 	unsigned int res = 0;
-	if(time == 0) //timer not stopped yet
+	if(time == 0) //Таймер еще не остановлен
 		res = SDL_GetTicks() - start_time;
 	else
 		res = time;
