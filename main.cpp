@@ -22,20 +22,20 @@ int main()
     if(!renderer.init_sdl("Thanksgiving Party", 1280, 720))
         return 0;
     
-    //game loop
+    //Луп игры
     while (!menu.wants_to_quit)
     {
         float dt = (SDL_GetTicks() - lastTime) / 1000.0;
         lastTime = SDL_GetTicks();
-        if(dt == 0) dt = 1; //prevent division by zero
+        if(dt == 0) dt = 1; //Предотвращение деления на ноль
 
-        //called five times per second
+        //Вызывает 5 раз за секунду
         if(lastFPSDisplay + 200 < lastTime)
         {
             lastFPSDisplay = lastTime;
             fps = 1 / dt;
 
-            //sort sprites only 5 times per seconds
+            //Сортирует спрайты только 5 раз за секунду
             map.sort_sprites(player.get_x(), player.get_y());
             map.animate_sprites();
 
@@ -54,7 +54,7 @@ int main()
             }
         }
         
-        if(menu.current == None) //no menu is displayed, the player is currently playing
+        if(menu.current == None) //Меню не будет отображаться, когда игрок играет
         {
             if(player.key_count > 0 && map.update_doors(player.get_x(), player.get_y(), dt))
                 player.key_count--;
