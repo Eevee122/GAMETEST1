@@ -4,15 +4,15 @@
  
 Menu::Menu() : wants_to_quit(false), current(Main), mouse_down(false), difficulty(Normal), sound(LowSound), timer(), leaderboard(),
     buttons{
-        Button(550, 350, 140, 55), //play
-        Button(380, 420, 600, 55), //difficulty
-        Button(550, 620, 140, 55), //menu quit
-        Button(500, 300, 220, 55), //resume
-        Button(530, 370, 140, 55), //pause quit
-        Button(550, 560, 140, 55), //menu help
-        Button(550, 600, 140, 55), //help back
-        Button(550, 600, 140, 55), //win quit
-        Button(460, 490, 300, 55) //sound
+        Button(550, 350, 140, 55), //играть
+        Button(380, 420, 600, 55), //сложность
+        Button(550, 620, 140, 55), //меню выход
+        Button(500, 300, 220, 55), //продолжить
+        Button(530, 370, 140, 55), //пауза выход
+        Button(550, 560, 140, 55), //меню помощь
+        Button(550, 600, 140, 55), //помощь обратно
+        Button(550, 600, 140, 55), //победа выход
+        Button(460, 490, 300, 55) //звук
     }
 {
 
