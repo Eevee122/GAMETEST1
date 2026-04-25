@@ -8,9 +8,8 @@ class Button
 {
 	public:
         Button(unsigned short x, unsigned short y, unsigned short w, unsigned short h);
-        bool is_mouse_over(unsigned short mouse_x, unsigned short mouse_y); // returns true if the specified coordinates are inside the button
-
-        //forbids copy constructor to avoid warning in c++11
+        bool is_mouse_over(unsigned short mouse_x, unsigned short mouse_y); // Возвращает значение true, если указанные координаты находятся внутри кнопки
+        //Запрещает копировать конструктор, чтобы избежать предупреждения в c++11
         Button(const Button& b) : Button(b.x, b.y, b.w, b.h) {};
         Button& operator=(const Button& b) = delete;
     private:
