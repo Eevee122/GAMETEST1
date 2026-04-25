@@ -5,10 +5,10 @@
 
 Map::Map() : speed(1.2), damage(0), enemy_count(0), map(NULL), dist(NULL), sprites(std::vector<Sprite>()), doors(std::vector<Door>())
 {
-	//Loading the map texture
+	//Загружает текстуры карты
 	SDL_Surface* map_tex = SDL_LoadBMP("map.bmp");
 
-	//Error handling for texture loading
+	//Обработка ошибок при загрузке текстур
     if(!map_tex)
     {
         std::cerr << "Couldn't load texture file " << SDL_GetError() << std::endl;
@@ -21,8 +21,8 @@ Map::Map() : speed(1.2), damage(0), enemy_count(0), map(NULL), dist(NULL), sprit
         return;
     }
 
-    //TODO : Fix this issue
-    //temporary workaround because map sizes other than 32x32 causes crashes
+    //Задача на устранение проблем
+    //Временное решение проблемы, поскольку размеры карты, отличные от 32x32, приводят к сбоям
     if(map_tex->w != 32 || map_tex->h != 32)
     {
     	std::cerr << "Map must be 32x32." << std::endl;
@@ -140,7 +140,7 @@ Door Map::get_door(unsigned short x, unsigned short y)
 	return doors.at(i);
 }
 
-//returns true if the player opened a door
+//Возвращает значение true, если игрок открыл дверь
 bool Map::update_doors(float player_x, float player_y, float dt)
 {
 	for(unsigned int i = doors.size(); i > 0; i--)
@@ -240,7 +240,7 @@ void Map::add_temp_sprite(unsigned short itex, float x, float y, unsigned short 
 
 void Map::update_sprites(float player_x, float player_y, float dt)
 {
-	//player position
+	//Позиция игрока
 	int px = short(player_x);
 	int py = short(player_y);
 	if(dist[px+py*w] != 0)
@@ -285,7 +285,7 @@ void Map::update_sprites(float player_x, float player_y, float dt)
 
 void Map::update_dist_map(unsigned short px, unsigned short py)
 {
-	//initialize the distance map
+	//Инициализация расстояний карты
 	for(int i = 0; i < h; i++)
 	{
 		for(int j = 0; j < w; j++)
@@ -294,11 +294,10 @@ void Map::update_dist_map(unsigned short px, unsigned short py)
 		}
 	}
 
-	//all for neighbors
 	const int nx[4] = {0, -1, 1, 0};
 	const int ny[4] = {-1, 0, 0, 1};
 
-	dist[px+py*w] = 0; //sets player's distance to 0
+	dist[px+py*w] = 0; //Ставит дистанцию игрока на 0
 	for (int iter = 0; iter < 10; iter++)
 	{
 		for (int y = 0; y < h; y++)
@@ -308,7 +307,7 @@ void Map::update_dist_map(unsigned short px, unsigned short py)
 				int idx = x + y * w;
 				if(map[idx] == ' ')
 				{
-					//for each neighbor
+					//Для каждой соседней
 					for(int i = 0; i < 4; i++)
 					{
 						int tidx = idx + nx[i] + ny[i] * w;
@@ -333,7 +332,7 @@ void Map::update_dist_map(unsigned short px, unsigned short py)
 	*/
 }
 
-//Gets a pixel from the texture file
+//Получает пиксель из файла текстуры
 Uint32 Map::get_pixel(SDL_Surface* source, unsigned short x, unsigned short y)
 {
     if(x >= h || y >= w) 
