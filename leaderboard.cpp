@@ -27,21 +27,21 @@ void Leaderboard::read_file()
             }
             catch(const std::exception& e)
             {
-                value = 300000; //5min
+                value = 300000; //5мин
             }
             scores[i++] = value;
             std::cout<<scores[i-1]<<std::endl;
         } 
         read_flow.close();
-        sort_scores(); //avoids cheating
+        sort_scores(); //избегает читов
     }
-    else //creates scores file if doesn't exist
+    else //Создает файл оценок, если он не существует
     {
         std::ofstream write_flow(scores_file.c_str());
 
         for(int i = 0; i < 5; i++)
         {
-            scores[i] = 300000; //5min
+            scores[i] = 300000; //5мин
             write_flow<<scores[i]<<std::endl;
         }
         write_flow.close();
